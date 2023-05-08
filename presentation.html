@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang=""en>
+    <head>
+        <title>My Presentation</title>
+        <script src="Presenter.js"></script>
+        <script src="Navigator.js"></script>
+        <script src="BasicCountdown.js"></script>
+        <script src="Halo.js"></script>
+        <script src="TargetElement.js"></script>
+        <script>
+         document.addEventListener('DOMContentLoaded', () => {
+             const nav = document.querySelector('tts-navigator');
+             if(nav){
+                 setTimeout(() => {
+                     nav.setAttribute('hide', '');
+                 }, 50);
+             }
+         })
+        </script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+             <script>hljs.highlightAll();</script> -->
+        <style>
+         :root {
+             --black-background-color:  #000000;
+             --dark-background-color: #1C304A;
+             --medium-background-color: #046B99;
+             --bright-background-color: #00CFFF;
+             --light-background-color: #B3EFFF;
+             --white-background-color: #FFFFFF;
+             --white-text-color: #FFFFFF;
+             --light-text-color: #B3EFFF;
+             --bright-text-color: #00CFFF;
+             --medium-text-color: #046B99;
+             --dark-text-color: #1C304A;
+             --black-text-color: #000000;
+         }
+
+         * { box-sizing: border-box; }
+
+         .white-text {
+	     color: var(--white-text-color);
+         }
+         .light-text {
+	     color: var(--light-text-color);
+         }
+         .bright-text {
+	     color: var(--bright-text-color);
+         }
+         .medium-text {
+	     color: var(--medium-text-color);
+         }
+         .dark-text {
+	     color: var(--dark-text-color);
+         }
+         .black-text {
+	     color: var(--black-text-color);
+         }
+
+         .white-background {
+	     background-color: var(--white-background-color);
+         }
+         .light-background {
+	     background-color: var(--light-background-color);
+         }
+         .bright-background {
+	     background-color: var(--bright-background-color);
+         }
+         .medium-background {
+	     background-color: var(--medium-background-color);
+         }
+         .dark-background {
+	     background-color: var(--dark-background-color);
+         }
+         .black-background {
+	     background-color: var(--black-background-color);
+         }
+
+         .flex-1 { flex: 1; }
+
+         .flex-column {
+             display: flex;
+             flex-direction: column;
+         }
+
+         .centered-text { text-align: center; }
+
+         .scroll-y {
+             overflow-y: auto;
+         }
+         body, html {
+             margin: 0;
+             padding: 0;
+             font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+             font-size: 1.5rem;
+         }
+
+         blockquote {
+             font-style: italic;
+         }
+
+         tts-slide {
+             padding: 2rem;
+             background-color: var(--dark-background-color);
+         }
+
+         .title-slide {
+             display: flex;
+             flex-direction: column;
+         }
+
+         .title-slide > h1 {
+             font-size: 4rem;
+         }
+
+         .title-slide-footer {
+             display: flex;
+             flex-direction: row;
+             align-items: center;
+             justify-content: flex-start;
+             margin-top: auto;
+         }
+
+         .title-slide-footer img {
+             width: 2rem;
+             height: 2rem;
+             margin-right: 10px;
+         }
+
+         .title-slide-footer > span {
+             font-size: 0.8rem;
+         }
+
+         tts-slide:not([slot="current"]){
+             display: none;
+         }
+
+         tts-slide dl {
+             font-size: 1.25rem;
+         }
+
+         tts-slide dd {
+             margin-bottom: 2em;
+         }
+
+         .pane-set {
+             display: flex;
+         }
+
+         .pane-set.horizontal {
+             flex-direction: row;
+             flex-wrap: nowrap;
+         }
+
+         .pane-set.horizontal > div:nth-child(2) {
+             margin-left: 1rem;
+         }
+
+         .pane-left,
+         .pane-right {
+             position: relative;
+         }
+
+         .example-code-block {
+             font-size: 0.6rem;
+         }
+
+         tts-countdown-basic {
+             font-size: 2em;
+             width: 100%;
+             display: flex;
+             justify-content: center;
+         }
+
+         tts-target {
+             --tts-target-hover-color: var(--light-background-color);
+             --tts-target-active-color: var(--bright-background-color);
+         }
+
+         tts-target:hover {
+             background-color: var(--tts-target-hover-color);
+             cursor: pointer;
+         }
+
+         tts-target.active {
+             background-color: var(--tts-target-active-color);
+         }
+        </style>
+    </head>
+    <body>
+        <tts-presentation id="my-presentation">
+            <!-- Title Slide -->
+            <tts-slide slot="current" id="title" class="title-slide"> 
+                <h1 class="bright-text" style="margin: 0;">Introduction to</h1>
+                <h1 class="white-text" style="margin: 0;">Web Components</h1>
+                <section>
+                    
+                </section>
+                <footer class="title-slide-footer">
+                    <img src="18F-Logo-2016-Blue.svg"/>
+                    <span class="white-text">in partnership with ourselves</span>
+                </footer>
+            </tts-slide>
+            
+            <tts-slide class="bright-background flex-column" id="what-are-they">
+                <h1 class="white-text">What are they?</h1>
+                <figure class="centered flex-1">
+                    <blockquote class="medium-text" cite="https://www.webcomponents.org/introduction">
+                        Web components are a set of web platform APIs that allow you to create new custom, reusable, encapsulated HTML tags to use in web pages and web apps. Custom components and widgets build on the Web Component standards, will work across modern browsers, and can be used with any JavaScript library or framework that works with HTML.
+                    </blockquote>
+                    <figcaption>
+                        From:
+                        <cite>
+                            <a href="https://www.webcomponents.org/introduction" target="_blank">webcomponents.org</a>
+                        </cite>
+                    </figcaption>
+                </figure>
+            </tts-slide>
+            
+            <tts-slide class="white-background" id="key-concepts">
+                <h1 class="bright-text">Key Concepts</h1>
+                <dl>
+                    <dt class="medium-text">Custom Elements</dt>
+                    <dd>
+                        Custom-defined HTML tags that you can use in your documents, whose behavior is described using a standard Javascript class and callback methods
+                    </dd>
+                    <dt class="medium-text">Template Elements (<code>&lt;template&gt;</code>)</dt>
+                    <dd>
+                        Elements that contain HTML that will not be displayed in the DOM by default, but which can be used and/or copied into other elements elsewhere on the page
+                    </dd>
+                    <dt class="medium-text">
+                        Slot Elements (<code>&lt;slot&gt;</code>)
+                    </dt>
+                    <dd>
+                        Elements that describe where incoming elements should be displayed within a template, particularly in the Shadow DOM (see below)
+                    </dd>
+                    <dt class="medium-text">
+                        Shadow DOM
+                    </dt>
+                    <dd>
+                        An isolated tree of elements contained within a given custom element. Shadow DOM will not inherit any of the styling of the outer "live" DOM. Shadow DOM can contain <code>&lt;slot&gt;</code> elements describing where "live" DOM children of the custom element should be displayed (more on this later). Shadow DOM is optional!
+                    </dd>
+                </dl>
+            </tts-slide>
+
+            <tts-slide class="white-background flex-column" id="custom-elements-1">
+                <h1 class="dark-color">
+                    Custom Elements
+                </h1>
+                <div class="pane-set horizontal">
+                    <div class="pane-left flex-1">
+                        <h2 class="bright-text centered-text">
+                            Countdown Example
+                            <tts-halo></tts-halo>
+                        </h2>
+                        <tts-countdown-basic seconds="20"></tts-countdown-basic>
+                    </div>
+                    <div class="pane-right flex-1 scroll-y">
+                        <h2 class="centered-text">Element Description</h2>
+                        <pre class="example-code-block"><code>
+class BasicCountdown extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  startCountdown() {
+    clearInterval();
+    this.displaySeconds();
+    this.interval = setInterval(() => {
+      if (this.seconds < 1) {
+        this.seconds = parseInt(this.getAttribute("seconds"));
+        this.displaySeconds();
+      } else {
+        this.seconds -= 1;
+        this.displaySeconds();
+      }
+    }, 1000);
+  }
+
+  clearInterval() {
+    if (this.interval) {
+      window.clearInterval(this.interval);
+    }
+  }
+
+  displaySeconds() {
+    this.innerHTML = `<strong>${this.seconds}</strong>`;
+  }
+
+  attributeChangedCallback(name, oldVal, newVal) {
+    if (name === "seconds") {
+      this.seconds = parseInt(newVal);
+      this.startCountdown();
+    }
+  }
+
+  static get observedAttributes() {
+    return ["seconds"];
+  }
+}
+
+window.customElements.define("tts-countdown-basic", BasicCountdown);
+                        </code></pre>
+                    </div>
+                </div>
+            </tts-slide>
+
+            <tts-slide class="white-background flex-column" id="custom-elements-1">
+                <h1 class="dark-color">
+                    Custom Elements
+                </h1>
+                <div class="pane-set horizontal">
+                    <div class="pane-left flex-1">
+                        <h2 class="bright-text centered-text">
+                            Let's break it down!
+                        </h2>
+                        <ul>
+                            <li>
+                        <p>Custom elements are defined using the <code>class</code> syntax, subclassing the built-in HTMLElement class:</p>
+                        <pre><code>class MyCustomElement extends HTMLElement {</code></pre>
+                            </li>
+                            <li>
+                                HTMLElement has specific <a href="#">lifecycle methods</a> that you can override in order to establish specific behaviors (more on this in a second)
+                            </li>
+                            <li>
+                                <p>
+                                    You tell the DOM about the existence of your custom element by mapping an element name to the class you've defined, using <code>window.customElements.define('my-element', MyCustomElement)</code>.<p>
+                                    <p>
+                                        This will allow you to use <code>&lt;my-element&gt;</code> on your page
+                                    </p>
+                            </li>
+                            <li>
+                                Element names <strong>must</strong> have a token with a dash after it -- this distinguishes them from the built in html5 elements.
+                            </li>
+                            <li>
+                                <p>
+                                    This is a <tts-target target="#example-target-area">test<span slot="text-content">This is the target content!</span></tts-target> of the targeter.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="example-target-area"></div>
+            </tts-slide>
+        </tts-presentation>
+        <tts-navigator for="#my-presentation"></tts-navigator>
+    </body>
+</html>
